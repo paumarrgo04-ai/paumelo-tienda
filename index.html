@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paumelo - Tienda Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Marquesina superior -->
+    <div class="marquee-container">
+        <div class="marquee-text">¿Planeando una fecha especial? ✨ Descubre nuestros diseños únicos y personalizados ✨</div>
+    </div>
+
+    <!-- Cabecera estática -->
+    <header class="header-estatico">
+        <nav class="nav-bar">
+            <div class="nav-links-izq">
+                <a href="#" class="nav-link" onclick="mostrarVista('inicio'); return false;">INICIO</a>
+                <a href="#" class="nav-link" onclick="mostrarVista('personalizador'); return false;">PERSONALIZADOS</a>
+            </div>
+
+            <div class="logo-container" onclick="mostrarVista('inicio')">
+                <img src="Imagenes/BotonesGeneralesDePagina/LogoPaumeloyLazos.png" alt="Logo Paumelo" class="logo-img">
+            </div>
+
+            <div class="nav-links-der">
+                <a href="#" class="nav-link" onclick="mostrarVista('stock'); return false;">STOCK</a>
+                <a href="#" class="nav-link" onclick="abrirContacto()">CONTÁCTANOS</a>
+                
+                <button class="btn-carrito-referencia" onclick="irAlCarrito()">
+                    CARRITO <span id="contador-carrito">🛒 0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="aviso-inferior">
+        <span>Ten en cuenta nuestros productos Personalizados y de Stock 💖</span>
+    </div>
+
+    <!-- VISTA 1: INICIO (Con 2 botones por producto: Personalizador y Stock) -->
+    <section id="vista-inicio" class="vista-seccion">
+        <div class="main-content">
+            
+            <!-- Carrusel de Banners -->
+            <div class="carrusel-banner">
+                <div class="carrusel-contenedor-imagen">
+                    <button class="btn-carrusel-invisible izq" onclick="cambiarBanner(-1)" title="Anterior"></button>
+                    <img src="Imagenes/Banners/Banner_Totebag.png" alt="Banner Principal" id="imagen-banner">
+                    <button class="btn-carrusel-invisible der" onclick="cambiarBanner(1)" title="Siguiente"></button>
+                </div>
+                <div class="indicador-flores-container" id="indicador-flores">
+                    <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" class="flor-indicador activa" onclick="irABanner(0)" alt="Flor 1">
+                    <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" class="flor-indicador" onclick="irABanner(1)" alt="Flor 2">
+                    <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" class="flor-indicador" onclick="irABanner(2)" alt="Flor 3">
+                    <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" class="flor-indicador" onclick="irABanner(3)" alt="Flor 4">
+                </div>
+            </div>
+            <section class="inicio-presentacion">
+                <h1>Detalles hechos con amor 💗</h1>
+                <p>Diseños tiernos y personalizados para regalar o consentirte.</p>
+                <button class="btn-accion-card" onclick="mostrarVista('personalizador')">CREA TU DISEÑO</button>
+                <button class="btn-accion-card" onclick="mostrarVista('stock')">VER PRODUCTOS</button>
+            </section>
+        </div>
+    </section>
+<section id="vista-personalizador" class="vista-seccion" style="display:none;">
+    <main class="main-content">
+        <h2 class="section-title-ref">ELIGE QUÉ QUIERES PERSONALIZAR 💕</h2>
+        <div class="productos-grid-ref">
+            <article class="card-producto-ref opcion-seccion" onclick="mostrarVista('personalizador-tote')">
+                <div class="card-img-container"><img src="Imagenes/PersonalizadorColorBolsos/Bolso_Rosado.png" alt="Tote Bag"></div>
+                <div class="card-info"><h3>Tote Bags</h3><p class="card-sub">Diseña las dos caras de tu bolsito</p><button class="btn-accion-card">PERSONALIZAR</button></div>
+            </article>
+            <article class="card-producto-ref opcion-seccion" onclick="mostrarVista('personalizador-llaveros')">
+                <div class="card-img-container"><img src="Imagenes/PersonalizadorLLaveros/LlaveroFieltroRosado.png" alt="Llavero de fieltro"></div>
+                <div class="card-info"><h3>Llaveritos de fieltro</h3><p class="card-sub">Elige color y decora ambas caras</p><button class="btn-accion-card">PERSONALIZAR</button></div>
+            </article>
+        </div>
+    </main>
+</section>
+
+<section id="vista-stock" class="vista-seccion" style="display:none;">
+    <main class="main-content">
+        <h2 class="section-title-ref">NUESTRO STOCK DISPONIBLE 🌷</h2>
+        <h3 class="section-title-ref">TOTE BAGS</h3>
+        <div class="productos-grid-ref">
+            <article class="card-producto-ref producto-stock">
+                <div class="producto-visual visual-tote"><img src="Imagenes/StockTotebag/StockToteBagKitty1.png" alt="Tote Bag Kitty"></div>
+                <div class="card-info"><h3>Tote Bag Kitty</h3><p class="card-precio">COP 30.000</p><p class="card-sub">Diseño listo para llevar</p><label for="cant-stock-tote">Cantidad:</label><input id="cant-stock-tote" type="number" min="1" max="20" value="1"><button class="btn-accion-card" onclick="comprarStockTote()">COMPRAR</button></div>
+            </article>
+            <article class="card-producto-ref producto-stock">
+                <div class="producto-visual visual-tote"><img src="Imagenes/StockTotebag/StockToteBagKitty2.png" alt="Tote Bag Kitty diseño alternativo"></div>
+                <div class="card-info"><h3>Tote Bag Kitty · Diseño 2</h3><p class="card-precio">COP 30.000</p><p class="card-sub">Diseño listo para llevar</p><label for="cant-stock-tote-2">Cantidad:</label><input id="cant-stock-tote-2" type="number" min="1" max="20" value="1"><button class="btn-accion-card" onclick="comprarStockTote(2)">COMPRAR</button></div>
+            </article>
+        </div>
+        <h3 class="section-title-ref">LLAVEROS DE FIELTRO · ONE PIECE</h3>
+        <div class="search-box stock-search"><input type="search" id="buscador-stock-llaveros" placeholder="Buscar llavero..." oninput="filtrarStockLlaverosFieltro(this.value)"></div>
+        <div class="productos-grid-ref" id="grid-stock-llaveros-fieltro"></div>
+        <h3 class="section-title-ref">LLAVEROS DE PELUCHE · PONIS</h3>
+        <div class="search-box stock-search"><input type="search" id="buscador-stock-peluche" placeholder="Buscar pony..." oninput="filtrarStockPeluches(this.value)"></div>
+        <div class="productos-grid-ref" id="grid-stock-llaveros-peluche"></div>
+    </main>
+</section>
+
+<section id="vista-personalizador-tote" class="vista-seccion" style="display: none;">
+        <main class="main-content">
+            <h2 class="section-title-ref">PERSONALIZADOR TOTE BAG</h2>
+            
+            <div class="personalizador-container">
+                <section class="panel-catalogo">
+                    <div class="search-box">
+                        <input type="text" id="buscador-personajes-tote" placeholder="Busca un diseño...">
+                    </div>
+                    <p class="instruccion-clic">SELECCIONA QUÉ CARA ESTÁS DISEÑANDO:</p>
+                    
+                    <div class="selector-caras">
+                        <button id="btn-cara-frente" class="btn-cara activa" onclick="cambiarCaraBolso('frente')">Cara Frontal</button>
+                        <button id="btn-cara-espalda" class="btn-cara" onclick="cambiarCaraBolso('espalda')">Cara Trasera</button>
+                    </div>
+
+                    <p class="instruccion-clic" style="margin-top: 10px;">TOCA EL DISEÑO (MÁX. 3 POR CARA)</p>
+                    <p id="contador-limite-tote">Diseños en esta cara: 0 / 3</p>
+                    
+                    <button class="btn-pasar-cara" onclick="siguienteCara()">✨ ¡Listo este lado! Diseñar la otra cara ➔</button>
+
+                    <div class="catalogo-grid" id="grid-personajes-tote"></div>
+                </section>
+
+                <section class="panel-visualizador">
+                    <div class="bolsos-duplicados-container">
+                        <div class="bolso-preview-wrapper activo" id="wrapper-frente" onclick="cambiarCaraBolso('frente')">
+                            <span class="etiqueta-layout">Cara Frontal</span>
+                            <div class="bolso-preview-container">
+                                <img src="Imagenes/PersonalizadorColorBolsos/Bolso_Rosado.png" alt="Frente" class="imagen-bolso-dinamica">
+                                <div id="slot-personajes-frente" class="slot-multiples-personajes"></div>
+                            </div>
+                        </div>
+
+                        <div class="bolso-preview-wrapper" id="wrapper-espalda" onclick="cambiarCaraBolso('espalda')">
+                            <span class="etiqueta-layout">Cara Trasera</span>
+                            <div class="bolso-preview-container">
+                                <img src="Imagenes/PersonalizadorColorBolsos/Bolso_Rosado.png" alt="Espalda" class="imagen-bolso-dinamica">
+                                <div id="slot-personajes-espalda" class="slot-multiples-personajes"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paleta-colores">
+                        <button class="color-btn" style="background-color: #ffb7b2;" onclick="cambiarColorBolso('Bolso_Rosado.png', 'Rosado')"></button>
+                        <button class="color-btn" style="background-color: #b5ead7;" onclick="cambiarColorBolso('Bolso_Verde.png', 'Verde')"></button>
+                        <button class="color-btn" style="background-color: #c7ceea;" onclick="cambiarColorBolso('Bolso_Azul.png', 'Azul')"></button>
+                        <button class="color-btn" style="background-color: #ffdac1;" onclick="cambiarColorBolso('Bolso_Naranja.png', 'Naranja')"></button>
+                        <button class="color-btn" style="background-color: #fdfd96;" onclick="cambiarColorBolso('Bolso_Amarillo.png', 'Amarillo')"></button>
+                        <button class="color-btn" style="background-color: #e2d9f3;" onclick="cambiarColorBolso('Bolso_Morado.png', 'Morado')"></button>
+                    </div>
+
+                    <div class="precio-seccion"><span class="precio-etiqueta">COP 30.000</span></div>
+                    <p class="texto-aviso-listo">Cuando estes seguro/a presiona</p>
+                    <button class="btn-listo" onclick="finalizarPedido('tote')">AGREGAR AL CARRITO</button>
+                </section>
+
+                <aside class="panel-piola">
+                    <div class="piola-header">
+                        <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" alt="Piola" class="piola-avatar">
+                        <div class="piola-info">
+                            <h3>Asistente Piola</h3>
+                            <p>Holi !! Hola !! 💖</p>
+                        </div>
+                    </div>
+                    <div class="piola-chat-box" id="piola-respuesta-tote">
+                        <p>Haz clic en una opción numérica:</p>
+                    </div>
+                    <div class="piola-opciones">
+                        <button onclick="responderPiola('tote', 1)">1. ¿Cómo cambio el color de mi bolso?</button>
+                        <button onclick="responderPiola('tote', 2)">2. ¿Cómo paso de una cara a otra?</button>
+                        <button onclick="responderPiola('tote', 3)">3. ¿Cuál es el límite de accesorios?</button>
+                        <button onclick="responderPiola('tote', 4)">4. ¿Cuánto tarda en estar listo?</button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </section>
+
+    <!-- VISTA 3: PERSONALIZADOR LLAVERO DE FIELTRO (Con buscador e IA idéntico al Tote) -->
+    <section id="vista-personalizador-llaveros" class="vista-seccion" style="display: none;">
+        <main class="main-content">
+            <h2 class="section-title-ref">PERSONALIZADOR LLAVERO DE FIELTRO</h2>
+            
+            <div class="personalizador-container">
+                <section class="panel-catalogo">
+                    <div class="search-box">
+                        <input type="text" id="buscador-personajes-llavero" placeholder="Busca un diseño...">
+                    </div>
+                    <p class="instruccion-clic">SELECCIONA TUS ACCESORIOS:</p>
+                    <p id="contador-limite-llavero" style="font-size: 11px; color: #ff758c; text-align: center; font-weight: bold; margin-bottom: 6px;">Diseños seleccionados: 0 / 2</p>
+                    <div class="catalogo-grid" id="grid-personajes-llavero"></div>
+                </section>
+
+                <section class="panel-visualizador">
+                    <div class="llavero-caras-editor">
+                        <div class="bolso-preview-wrapper activo">
+                            <span class="etiqueta-layout">Cara frontal</span>
+                            <div class="bolso-preview-container preview-llavero">
+                                <img src="Imagenes/PersonalizadorLLaveros/LlaveroFieltroRosado.png" alt="Base frontal del llavero" class="imagen-llavero-dinamica" id="img-llavero-base">
+                                <div id="slot-personajes-llavero-frente" class="slot-multiples-personajes"></div>
+                            </div>
+                            <button class="btn-pasar-cara" type="button" onclick="cambiarCaraLlavero('frente')">EDITAR FRENTE</button>
+                        </div>
+                        <div class="bolso-preview-wrapper">
+                            <span class="etiqueta-layout">Cara trasera</span>
+                            <div class="bolso-preview-container preview-llavero">
+                                <img src="Imagenes/PersonalizadorLLaveros/LlaveroFieltroRosado.png" alt="Base trasera del llavero" class="imagen-llavero-dinamica" id="img-llavero-base-espalda">
+                                <div id="slot-personajes-llavero-espalda" class="slot-multiples-personajes"></div>
+                            </div>
+                            <button class="btn-pasar-cara" type="button" onclick="cambiarCaraLlavero('espalda')">EDITAR REVERSO</button>
+                        </div>
+                    </div>
+
+                    <!-- Paleta de colores para el llavero base -->
+                    <div class="paleta-colores">
+                        <button class="color-btn" style="background-color: #ffb7b2;" onclick="cambiarColorLlavero('LlaveroFieltroRosado.png', 'Rosado')"></button>
+                        <button class="color-btn" style="background-color: #ff99bb;" onclick="cambiarColorLlavero('LlaveroFieltroRosadoPastel.png', 'Rosado Pastel')"></button>
+                        <button class="color-btn" style="background-color: #c7ceea;" onclick="cambiarColorLlavero('LlaveroFieltroAzul.png', 'Azul')"></button>
+                        <button class="color-btn" style="background-color: #a0c4ff;" onclick="cambiarColorLlavero('LlaveroFieltroAzulPastel.png', 'Azul Pastel')"></button>
+                        <button class="color-btn" style="background-color: #ff6b6b;" onclick="cambiarColorLlavero('LlaveroFieltroRojo.png', 'Rojo')"></button>
+                        <button class="color-btn" style="background-color: #b5ead7;" onclick="cambiarColorLlavero('LlaveroFieltroVerdeLima.png', 'Verde Lima')"></button>
+                    </div>
+
+                    <div class="precio-seccion"><span class="precio-etiqueta">COP 12.000</span></div>
+                    <p class="texto-aviso-listo">Cuando estes seguro/a presiona</p>
+                    <button class="btn-listo" onclick="finalizarPedido('llavero-personalizado')">AGREGAR AL CARRITO</button>
+                </section>
+
+                <aside class="panel-piola">
+                    <div class="piola-header">
+                        <img src="Imagenes/BotonesGeneralesDePagina/FlorBotonCarruceldeBanners.png" alt="Piola" class="piola-avatar">
+                        <div class="piola-info">
+                            <h3>Asistente Piola</h3>
+                            <p>Holi !! Hola !! 💖</p>
+                        </div>
+                    </div>
+                    <div class="piola-chat-box" id="piola-respuesta-llavero">
+                        <p>Haz clic en una opción numérica:</p>
+                    </div>
+                    <div class="piola-opciones">
+                        <button onclick="responderPiola('llavero', 1)">1. ¿Cómo personalizo mi llavero?</button>
+                        <button onclick="responderPiola('llavero', 2)">2. ¿Cuántos accesorios puedo agregar?</button>
+                        <button onclick="responderPiola('llavero', 3)">3. ¿De qué material están hechos?</button>
+                        <button onclick="responderPiola('llavero', 4)">4. ¿Cuánto tarda el envío?</button>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </section>
+
+    <!-- MODALES -->
+    <div id="modal-registro" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalRegistro()">&times;</span>
+            <h2>REGISTRO DE USUARIO</h2>
+            <form id="form-registro" onsubmit="procesarRegistro(event)">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" required placeholder="Tu nombre y apellido">
+                
+                <label for="telefono">Teléfono / WhatsApp</label>
+                <input type="tel" id="telefono" required placeholder="3001234567">
+
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" required placeholder="tu-correo@email.com">
+                
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" required placeholder="********">
+                
+                <button type="submit" class="btn-ingresar">Registrarse y Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-contacto" class="modal" style="display: none;">
+        <div class="modal-content text-center">
+            <span class="close" onclick="cerrarContacto()">&times;</span>
+            <h2>CONTÁCTANOS 💖</h2>
+            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">¡Síguenos en nuestras páginas para estar al tanto de nuestro contenido y activa con nosotras!</p>
+            
+            <div class="redes-botones">
+                <a href="https://www.instagram.com/paumelo_dca/?hl=es" target="_blank" class="btn-red social-ig">📸 Instagram PauMelo</a>
+                <a href="https://www.tiktok.com/@paumelo_?is_from_webapp=1&sender_device=pc" target="_blank" class="btn-red social-tk">🎵 TikTok PauMelo</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-factura" class="modal" style="display: none;">
+        <div class="modal-content factura-box">
+            <span class="close" onclick="cerrarFactura()">&times;</span>
+            <h3>FACTURA DE PEDIDO</h3>
+            <p><strong>Fecha:</strong> <span id="factura-fecha"></span></p>
+            <hr>
+            <div id="detalle-factura"></div>
+            <hr>
+            <p class="factura-total"><strong>Total:</strong> <span id="factura-precio-total">COP 0</span></p>
+            <p id="aviso-descuento-oculto" style="font-size: 10px; color: #2e7d32; font-weight: bold; text-align: center; display: none;">¡Descuento por volumen aplicado (20% menos)! 🎉</p>
+            <p class="estado-carrito">GRACIAS !! POR CONFIAR EN PAUMELO</p>
+            <div class="factura-acciones">
+                <button class="btn-archivar" onclick="archivarFactura()">Archivar</button>
+                <button class="btn-borrar" onclick="borrarFactura()">Borrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
